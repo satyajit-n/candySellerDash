@@ -42,15 +42,48 @@
 // }
 
 // GET ELEMENT BY TAG NAME
-let li = document.getElementsByTagName("li");
-console.log(li);
-li[4].style.backgroundColor = "gray";
+// let li = document.getElementsByTagName("li");
+// console.log(li);
+// li[4].style.backgroundColor = "gray";
 
-for (let i = 0; i < li.length; i++) {
-  li[i].style.fontWeight = "bold";
+// for (let i = 0; i < li.length; i++) {
+//   li[i].style.fontWeight = "bold";
+// }
+
+// let item = document.getElementsByClassName("list-solo-item");
+// console.log(item);
+// // item[0].style.backgroundColor = "green";
+// item[0].style.fontWeight = "bold";
+
+// QUERY SELECTOR
+
+// let header = document.querySelector('#main-header');
+// header.style.borderBottom = 'solid 4px #ccc'
+
+// let input = document.querySelector('input');
+// input.value = 'Hello World'
+
+// let submit = document.querySelector('input[type="submit"]');
+// submit.value = 'SEND'
+
+var secondItem = document.querySelector('.list-group-item:nth-child(2)');
+secondItem.style.backgroundColor = 'green';
+
+var thirdItem = document.querySelector('.list-group-item:nth-child(2)');
+thirdItem.style.color = 'green';
+
+// QUERY SELECTOR ALL
+
+var odd = document.querySelectorAll('li:nth-child(odd');
+// var greenFontLi = document.querySelectorAll('li:nth-child(1)');
+// greenFontLi.style.color = 'green';
+for(let i = 0; i < odd.length; i++ ){
+    odd[i].style.backgroundColor = 'green'
 }
 
-let item = document.getElementsByClassName("list-solo-item");
-console.log(item);
-// item[0].style.backgroundColor = "green";
-item[0].style.fontWeight = "bold";
+var greenLi = document.querySelectorAll('li:nth-child(1');
+for(let i = 0; i < odd.length; i++ ){
+    if(odd == 1){
+        odd[i].style.color = 'green'
+    }
+}
