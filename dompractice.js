@@ -14,7 +14,6 @@
 // console.log(document.links);
 //console.log(document.images);
 
-
 // GETELEMENTBYID
 
 // console.log(document.getElementById('header-title'))
@@ -34,12 +33,24 @@
 
 //GET ELEMENT BY CLASS NAME
 
-let item = document.getElementsByClassName('list-group-item')
-console.log(item)
-item[2].style.backgroundColor = 'green'
+// let item = document.getElementsByClassName("list-group-item");
+// console.log(item);
+// item[2].style.backgroundColor = "green";
 
-for(let i = 0; i<item.length;i++){
-    item[i].style.fontWeight = 'bold'
+// for (let i = 0; i < item.length; i++) {
+//   item[i].style.fontWeight = "bold";
+// }
+
+// GET ELEMENT BY TAG NAME
+let li = document.getElementsByTagName("li");
+console.log(li);
+li[4].style.backgroundColor = "gray";
+
+for (let i = 0; i < li.length; i++) {
+  li[i].style.fontWeight = "bold";
 }
 
-
+let item = document.getElementsByClassName("list-solo-item");
+console.log(item);
+// item[0].style.backgroundColor = "green";
+item[0].style.fontWeight = "bold";
