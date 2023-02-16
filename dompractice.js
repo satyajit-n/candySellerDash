@@ -66,24 +66,89 @@
 // let submit = document.querySelector('input[type="submit"]');
 // submit.value = 'SEND'
 
-var secondItem = document.querySelector('.list-group-item:nth-child(2)');
-secondItem.style.backgroundColor = 'green';
+// var secondItem = document.querySelector('.list-group-item:nth-child(2)');
+// secondItem.style.backgroundColor = 'green';
 
-var thirdItem = document.querySelector('.list-group-item:nth-child(2)');
-thirdItem.style.color = 'green';
+// var thirdItem = document.querySelector('.list-group-item:nth-child(2)');
+// thirdItem.style.color = 'green';
 
 // QUERY SELECTOR ALL
 
-var odd = document.querySelectorAll('li:nth-child(odd');
+// var odd = document.querySelectorAll('li:nth-child(odd');
 // var greenFontLi = document.querySelectorAll('li:nth-child(1)');
 // greenFontLi.style.color = 'green';
-for(let i = 0; i < odd.length; i++ ){
-    odd[i].style.backgroundColor = 'green'
-}
+// for(let i = 0; i < odd.length; i++ ){
+//     odd[i].style.backgroundColor = 'green'
+// }
 
-var greenLi = document.querySelectorAll('li:nth-child(1');
-for(let i = 0; i < odd.length; i++ ){
-    if(odd == 1){
-        odd[i].style.color = 'green'
-    }
-}
+// var greenLi = document.querySelectorAll('li:nth-child(1');
+// for(let i = 0; i < odd.length; i++ ){
+//     if(odd == 1){
+//         odd[i].style.color = 'green'
+//     }
+// }
+
+// TRAVERSING DOM
+
+let itemList = document.querySelector('#items');
+
+// parent node
+// console.log(itemList.parentNode);
+// itemList.parentNode.style.backgroundColor = '#f4f4f4';
+// console.log(itemList.parentNode.parentNode);
+
+//parent element
+// console.log(itemList.parentElement);
+// itemList.parentElement.style.backgroundColor = '#f4f4f4';
+// console.log(itemList.parentElement.parentElement);
+
+//child nodes
+// console.log(itemList.childNodes);
+
+// console.log(itemList.children);
+// console.log(itemList.children[0]);
+
+
+//first child
+// console.log(itemList.firstChild);
+
+//first element child
+// console.log(itemList.firstElementChild);
+// itemList.firstElementChild.textContent = 'Hello World!!'
+
+//last child & last element child
+// console.log(itemList.lastChild);
+// console.log(itemList.lastElementChild);
+// itemList.lastElementChild.textContent = 'Hello World!!'
+
+//next sibling
+// console.log(itemList.nextSibling)
+// console.log(itemList.nextElementSibling)
+
+// previous sibling
+// console.log(itemList.previousSibling)
+// console.log(itemList.previousElementSibling)
+
+// Creating Element
+
+//create a div
+
+var newDiv = document.createElement('div');
+// ad class
+newDiv.className = 'Hello'
+//add Id
+newDiv.id = 'hello1'
+//add title
+newDiv.setAttribute('title','Hello Div')
+//create text node
+var newDivText = document.createTextNode('Hello world!')
+
+//add text to div
+newDiv.appendChild(newDivText)
+
+//add newDIv to DOM
+var container = document.querySelector('header .container');
+var h1 = document.querySelector('header h1');
+console.log(newDiv)
+
+container.insertBefore(newDiv,h1)
