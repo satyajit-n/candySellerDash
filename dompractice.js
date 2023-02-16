@@ -19,7 +19,7 @@
 
 // console.log(document.getElementById('header-title'))
 
-let headertitle = document.getElementById('header-title');
+// let headertitle = document.getElementById('header-title');
 // let header = document.getElementById('main-header');
 
 // console.log(headertitle)
@@ -27,8 +27,19 @@ let headertitle = document.getElementById('header-title');
 // headertitle.textContent = 'hello';
 // headertitle.innerText = 'goodbye';
 
-console.log(headertitle.textContent);
-console.log(headertitle.innerText);
+// console.log(headertitle.textContent);
+// console.log(headertitle.innerText);
 
 // header.style.borderBottom = 'solid 3px #000';
+
+//GET ELEMENT BY CLASS NAME
+
+let item = document.getElementsByClassName('list-group-item')
+console.log(item)
+item[2].style.backgroundColor = 'green'
+
+for(let i = 0; i<item.length;i++){
+    item[i].style.fontWeight = 'bold'
+}
+
 
