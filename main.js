@@ -36,23 +36,31 @@ function onSubmit(e) {
   e.preventDefault()
   const nameInput = document.getElementById("name").value;
   const emailInput = document.getElementById("email").value;
+  const numInput = document.getElementById("number").value;
 
   //object
   let myObj = {
     name : nameInput,
-    email : emailInput
+    email : emailInput,
+    number : numInput
   };
 
   //serializing object
   let myObjSerialized = JSON.stringify(myObj);
 
   //serializing the object so that it can be stored in localStorage
-  localStorage.setItem('myObject',myObjSerialized);
+  localStorage.setItem(emailInput,myObjSerialized);
+
+  //show user on screen
+  const parentEle = document.getElementById('lisOfItems');
+  const childEle = document.createElement('li');
+  childEle.textContent = myObj.name + ' - ' + myObj.email + ' - ' + myObj.number;
+  parentEle.appendChild(childEle)
 
   //deserializing the object to make it usable
-  let myObjDeserialized = JSON.parse(localStorage.getItem('myObject'));
+  //let myObjDeserialized = JSON.parse(localStorage.getItem('myObject'));
 
-  console.log(myObjDeserialized)
+  //console.log(myObjDeserialized)
 
 
   // if(nameInput.value === formName && emailInput.value === formEmail) {
