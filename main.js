@@ -58,8 +58,11 @@ function onSubmit(e) {
   const parentEle = document.getElementById('lisOfItems');
   const childEle = document.createElement('li');
   const childButton = document.createElement('input');
+  const editButton = document.createElement('input');
   childButton.type = 'button';
+  editButton.type = 'button';
   childButton.value = 'Delete';
+  editButton.value = 'edit';
 
   childEle.textContent = myObj.name + ' - ' + myObj.email + ' - ' + myObj.number;
   // childButton.appendChild(document.createTextNode('Delete'))
@@ -67,8 +70,17 @@ function onSubmit(e) {
     localStorage.removeItem(myObj.email)
     parentEle.removeChild(childEle)
   }
+
+  editButton.onclick = () =>{
+    document.getElementById('name').value = myObj.name;
+    document.getElementById('email').value = myObj.email;
+    document.getElementById('number').value = myObj.number;
+    localStorage.removeItem(myObj.email)
+    parentEle.removeChild(childEle)
+  }
   parentEle.appendChild(childEle)
   childEle.appendChild(childButton);
+  childEle.appendChild(editButton);
 
   
 
