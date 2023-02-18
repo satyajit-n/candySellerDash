@@ -33,11 +33,26 @@ const userList = document.querySelector('#users');
 myForm.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
+  e.preventDefault()
   const nameInput = document.getElementById("name").value;
   const emailInput = document.getElementById("email").value;
 
-  localStorage.setItem('name',nameInput);
-  localStorage.setItem('email',emailInput);  
+  //object
+  let myObj = {
+    name : nameInput,
+    email : emailInput
+  };
+
+  //serializing object
+  let myObjSerialized = JSON.stringify(myObj);
+
+  //serializing the object so that it can be stored in localStorage
+  localStorage.setItem('myObject',myObjSerialized);
+
+  //deserializing the object to make it usable
+  let myObjDeserialized = JSON.parse(localStorage.getItem('myObject'));
+
+  console.log(myObjDeserialized)
 
 
   // if(nameInput.value === formName && emailInput.value === formEmail) {
