@@ -29,8 +29,11 @@ const myForm = document.querySelector('#my-form');
 // const emailInput = document.getElementById("email").value;
 const msg = document.querySelector('.msg');
 const userList = document.querySelector('#users');
+const delButton = document.querySelector('.btn:hover');
 
 myForm.addEventListener('submit', onSubmit);
+
+
 
 function onSubmit(e) {
   e.preventDefault()
@@ -54,8 +57,20 @@ function onSubmit(e) {
   //show user on screen
   const parentEle = document.getElementById('lisOfItems');
   const childEle = document.createElement('li');
+  const childButton = document.createElement('input');
+  childButton.type = 'button';
+  childButton.value = 'Delete';
+
   childEle.textContent = myObj.name + ' - ' + myObj.email + ' - ' + myObj.number;
+  // childButton.appendChild(document.createTextNode('Delete'))
+  childButton.onclick = () =>{
+    localStorage.removeItem(myObj.email)
+    parentEle.removeChild(childEle)
+  }
   parentEle.appendChild(childEle)
+  childEle.appendChild(childButton);
+
+  
 
   //deserializing the object to make it usable
   //let myObjDeserialized = JSON.parse(localStorage.getItem('myObject'));
@@ -74,3 +89,10 @@ function onSubmit(e) {
   // }
 
 }
+
+// function removeList(e){
+//   if(e.target.classList.contains('btn:hover')){
+//     var li = e.target.parentElement;
+//     parentEle.removeChild(li);
+//   }
+// }
