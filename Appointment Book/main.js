@@ -1,30 +1,5 @@
 const btn = document.querySelector(".btn");
-// localStorage.setItem('name','satyajeet');
-// localStorage.setItem('email','namawar.satyajeet@gmail.com');
-
-// const formName = localStorage.getItem('name')
-// const formEmail = localStorage.getItem('email')
-
-// btn.addEventListener('click', (e) =>{
-//     e.preventDefault();
-//     console.log('click');
-// });
-
-// btn.addEventListener('mouseover', (e) =>{
-//     e.preventDefault();
-//     document.querySelector('#my-form').style.background = 'grey';
-//     document.querySelector('body').classList.add('btn:hover');
-// });
-
-// btn.addEventListener('mouseout', (e) =>{
-//     e.preventDefault();
-//     document.querySelector('#my-form').style.background = 'white';
-//     console.log('click');
-// });
-
 const myForm = document.querySelector("#my-form");
-// const nameInput = document.getElementById("name").value;
-// const emailInput = document.getElementById("email").value;
 const msg = document.querySelector(".msg");
 const userList = document.querySelector("#users");
 const delButton = document.querySelector(".btn:hover");
@@ -60,14 +35,10 @@ function onSubmit(e) {
       myObj
     )
     .then((res) => {
-      childEle.textContent =
-        res.data.name + " - " + res.data.email + " - " + res.data.pnumber;
-      parentEle.appendChild(childEle);
-      childEle.appendChild(childButton);
-      childEle.appendChild(editButton);
-      console.log(res);
+      showUserOnScreen(res);
     })
     .catch((err) => console.log(err));
+
   //serializing object
   //let myObjSerialized = JSON.stringify(myObj);
 
@@ -75,6 +46,8 @@ function onSubmit(e) {
   //localStorage.setItem(email, myObjSerialized);
 
   // childButton.appendChild(document.createTextNode('Delete'))
+
+  //Content load on start
   childButton.onclick = () => {
     localStorage.removeItem(myObj.email);
     parentEle.removeChild(childEle);
@@ -103,7 +76,44 @@ function onSubmit(e) {
   //   setTimeout(() => msg.remove(), 3000);
   // }
 }
+//Show user on screen function
+function showUserOnScreen(user) {
+  const parentEle = document.getElementById("lisOfItems");
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const pnumber = document.getElementById("pnumber").value;
+  const childEle = document.createElement("li");
+  const childButton = document.createElement("input");
+  const editButton = document.createElement("input");
+  childButton.type = "button";
+  editButton.type = "button";
+  childButton.value = "Delete";
+  editButton.value = "edit";
 
+  childEle.textContent =
+    user.name + " - " + user.email + " - " + user.pnumber;
+  parentEle.appendChild(childEle);
+  childEle.appendChild(childButton);
+  childEle.appendChild(editButton);
+}
+
+window.addEventListener("DOMContentLoaded", (e) => {
+  //API CALL TO GET DATA
+  e.preventDefault();
+  axios
+    .get(
+      "https://crudcrud.com/api/3b27526a199a4965966293895e397712/appointmentData"
+    )
+    .then((res) => {
+      for (var i = 0; i < res.data.length; i++) {
+        showUserOnScreen(res.data[i]);
+      }
+      console.log("hello");
+    })
+    .catch((res) => {
+      console.log(res);
+    });
+});
 // function removeList(e){
 //   if(e.target.classList.contains('btn:hover')){
 //     var li = e.target.parentElement;
