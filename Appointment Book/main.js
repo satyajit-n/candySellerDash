@@ -47,26 +47,26 @@ function onSubmit(e) {
 
   // childButton.appendChild(document.createTextNode('Delete'))
 
-  childButton.onclick = () => {
-    // localStorage.removeItem(myObj.email);
+  // childButton.onclick = () => {
+  //   // localStorage.removeItem(myObj.email);
 
-    axios
-      .delete(
-        `https://crudcrud.com/api/6b6e8ae3df314414b587d9cbf90b4b72/appointmentData/${data._id}`
-      )
-      .then((res) => {
-        parentEle.removeChild(childEle);
-      })
-      .catch((err) => console.log(err));
-  };
+  //   axios
+  //     .delete(
+  //       `https://crudcrud.com/api/6b6e8ae3df314414b587d9cbf90b4b72/appointmentData/${data._id}`
+  //     )
+  //     .then((res) => {
+  //       parentEle.removeChild(childEle);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
-  editButton.onclick = () => {
-    document.getElementById("name").value = myObj.name;
-    document.getElementById("email").value = myObj.email;
-    document.getElementById("pnumber").value = myObj.pnumber;
-    localStorage.removeItem(myObj.email);
-    parentEle.removeChild(childEle);
-  };
+  // editButton.onclick = () => {
+  //   document.getElementById("name").value = myObj.name;
+  //   document.getElementById("email").value = myObj.email;
+  //   document.getElementById("pnumber").value = myObj.pnumber;
+  //   localStorage.removeItem(myObj.email);
+  //   parentEle.removeChild(childEle);
+  // };
 
   //deserializing the object to make it usable
   //let myObjDeserialized = JSON.parse(localStorage.getItem('myObject'));
@@ -97,6 +97,7 @@ function showUserOnScreen(user) {
   childButton.value = "Delete";
   editButton.value = "edit";
 
+  console.log(user)
   childEle.textContent =
     user.data.name + " - " + user.data.email + " - " + user.data.pnumber;
   parentEle.appendChild(childEle);
@@ -123,9 +124,10 @@ function showUserOnLoad(user) {
   childEle.appendChild(childButton);
   childEle.appendChild(editButton);
 
+  //Delete user with button
   childButton.onclick = () => {
     // localStorage.removeItem(myObj.email);
-    
+
     axios
       .delete(
         `https://crudcrud.com/api/6b6e8ae3df314414b587d9cbf90b4b72/appointmentData/${user._id}`
@@ -134,6 +136,21 @@ function showUserOnLoad(user) {
         parentEle.removeChild(childEle);
       })
       .catch((err) => console.log(err));
+  };
+
+  //Edit user with button
+  editButton.onclick = () => {
+    axios
+      .delete(
+        `https://crudcrud.com/api/6b6e8ae3df314414b587d9cbf90b4b72/appointmentData/${user._id}`
+      )
+      .then((res) => {
+        document.getElementById("name").value = user.name;
+        document.getElementById("email").value = user.email;
+        document.getElementById("pnumber").value = user.pnumber;
+        parentEle.removeChild(childEle)
+      })
+      .catch((err)=>console.log(err))
   };
 }
 
@@ -153,7 +170,6 @@ window.addEventListener("DOMContentLoaded", (e) => {
       console.log(res);
     });
 });
-
 
 // function removeList(e){
 //   if(e.target.classList.contains('btn:hover')){
